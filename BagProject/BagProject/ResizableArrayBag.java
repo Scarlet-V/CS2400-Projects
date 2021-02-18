@@ -8,7 +8,7 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 private final T[] bag;
 private static final int numberOfEntries;
     /**Creates an empty bag
-     * @param capacity the integer capacity desired
+     * @param capacity the integer capacity desired 
      */
     public ResizableArrayBag(int desiredCapacity)
     {
@@ -56,7 +56,8 @@ private static final int numberOfEntries;
     }
 
 
-    public void difference() {
+    public void difference() 
+    {
         // TODO Auto-generated method stub
 
     }
@@ -180,6 +181,12 @@ private static final int numberOfEntries;
             result[index] = bag[index];
         }
         return result;
+    }
+
+    @Override
+    public void intersection() {
+        // TODO Auto-generated method stub
+
     }
 
 

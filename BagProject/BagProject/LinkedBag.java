@@ -139,4 +139,22 @@ public class LinkedBag<T> implements BagInterface<T>
 		}
 		return result;
 	}
+
+	@Override
+	public String union() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void intersection() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void difference() {
+		// TODO Auto-generated method stub
+
+	}
 }

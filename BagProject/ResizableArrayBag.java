@@ -1,14 +1,10 @@
 package BagProject;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 /**A class of bags whose entries are stored in a resizable array
  * @author Miranda Silva, Samuel Chih
  */
-=======
->>>>>>> parent of 292fbe6 (Updating javadoc for resizableBag)
-=======
->>>>>>> parent of 292fbe6 (Updating javadoc for resizableBag)
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ResizableArrayBag<T> implements BagInterface<T> {
 private final T[] bag;
@@ -30,7 +26,7 @@ private static final int numberOfEntries;
     private void checkCapacity(int capacity)
     {
         if(capacity>MAX_CAPACITY)
-            throw new IllegalStateException("Attempt to create a bag whose"+"capacity exceeds allowed"+"maximum of"+MAX_CAPACITY)
+            throw new IllegalStateException("Attempt to create a bag whose"+"capacity exceeds allowed"+"maximum of"+MAX_CAPACITY);
     }
 
     private void doubleCapacity()
@@ -46,20 +42,23 @@ private static final int numberOfEntries;
             throw new SecurityException("ResizableArray object is corrupt.");
     }
 
-    public String union() {
+    public String union() 
+    {
         return null;
-        // TODO Auto-generated method stub
+        
 
     }
 
-    public void interaction() {
-        // TODO Auto-generated method stub
+    public void interaction() 
+    {
+        
 
     }
 
 
-    public void difference() {
-        // TODO Auto-generated method stub
+    public void difference() 
+    {
+        
 
     }
 

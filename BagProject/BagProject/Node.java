@@ -17,9 +17,9 @@ private Node(T dataPortion, Node nextNode)
 } // end constructor
 
 private T getData()
-[
+{
 	return data;
-]
+}
 
 private void setData(T newData)
 {
