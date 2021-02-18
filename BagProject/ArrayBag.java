@@ -1,4 +1,4 @@
-public class ArrayBag<T> impliments BagInterface<T>
+public class ArrayBag<T> implements BagInterface<T>
 {
     private final T[] bag;
     private static final int DEFAULT_CAPACITY = 25;
