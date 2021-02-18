@@ -81,9 +81,15 @@ private static final int numberOfEntries;
     }
 
 
-    public Object[] toArray() {
-        // TODO Auto-generated method stub
-        return null;
+    public T[] toArray()
+    {
+        @SuppressWarnings("unchecked")
+        T[] result = (T[])new Object[numberOfEntries];
+        for (int index =0; index < numberOfEntries; index++)
+        {
+            result[index] = bag[index];
+        }
+        return result;
     }
 
 
