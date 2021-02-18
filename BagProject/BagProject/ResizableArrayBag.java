@@ -1,29 +1,30 @@
 package BagProject;
-<<<<<<< HEAD
 /**A class of bags whose entries are stored in a resizable array
  * @author Miranda Silva, Samuel Chih
  */
-=======
->>>>>>> parent of 292fbe6 (Updating javadoc for resizableBag)
 import java.util.ArrayList;
 
 public class ResizableArrayBag<T> implements BagInterface<T> {
 private final T[] bag;
 private static final int numberOfEntries;
+    /**Creates an empty bag
+     * @param capacity the integer capacity desired
+     */
     public ResizableArrayBag(int desiredCapacity)
     {
         if(desiredCapacity<=MAX_CAPACITY)
         {
             numberOfEntries =0;
+            // the cast is safe because the new array contains null entries
             @SuppressWarnings("unchecked")
-            T[] tempBag=(T[]new Object[capacity]);
+            T[] tempBag=(T[]new Object[capacity]); //unchecked cast
             bag = tempBag;
             integrityOK=true;
         }
         else
             throw new IllegalStateException("Attempt to create a bag whose"+"capacity exceeds allowed maximum.");
-    }
-
+    } /**end of constructor */
+    
     private void checkCapacity(int capacity)
     {
         if(capacity>MAX_CAPACITY)
@@ -72,7 +73,9 @@ private static final int numberOfEntries;
         return numberOfEntries == 0;
     }
 
-
+    /**Adds a new entry to this bag
+     * @param newEntry The object to be added as a new entry
+     */
     public boolean add(T newEntry) 
     {
         checkIntegrity();
