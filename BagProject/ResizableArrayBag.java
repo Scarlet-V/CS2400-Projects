@@ -85,7 +85,6 @@ private static final int numberOfEntries;
     }
 
 
-<<<<<<< Updated upstream
     public T[] toArray()
     {
         @SuppressWarnings("unchecked")
@@ -94,17 +93,6 @@ private static final int numberOfEntries;
         {
             result[index] = bag[index];
         }
-=======
-    public T[] toArray() 
-    {
-        @SuppressWarnings("unchecked")
-        T[] result= (T[])new Object[numberOfEntries];
-        for (int index = 0; index < numberOfEntries; index++)
-        {
-            result[index] = bag[index];
-        }
-        // TODO Auto-generated method stub
->>>>>>> Stashed changes
         return result;
     }
 
