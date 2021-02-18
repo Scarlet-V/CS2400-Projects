@@ -3,10 +3,13 @@ package BagProject;
  * @author Miranda Silva, Samuel Chih
  */
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ResizableArrayBag<T> implements BagInterface<T> {
-private final T[] bag;
-private static final int numberOfEntries;
+
+    private T[] bag;
+    private static final int MAX_CAPACITY = 100;
+    private int  numberOfEntries = 100;
     /**Creates an empty bag
      * @param capacity the integer capacity desired
      */
@@ -14,12 +17,11 @@ private static final int numberOfEntries;
     {
         if(desiredCapacity<=MAX_CAPACITY)
         {
-            numberOfEntries =0;
             // the cast is safe because the new array contains null entries
             @SuppressWarnings("unchecked")
             T[] tempBag=(T[]new Object[capacity]); //unchecked cast
             bag = tempBag;
-            integrityOK=true;
+            boolean integrityOK = true;
         }
         else
             throw new IllegalStateException("Attempt to create a bag whose"+"capacity exceeds allowed maximum.");
@@ -80,18 +82,15 @@ private static final int numberOfEntries;
     {
         checkIntegrity();
         boolean result = true;
-        if (isArrayFull()) 
+        while (!isArrayFull()) 
         {
-               doubleCapacity;
+               Capacity ++;
         }
 
          // Assertion: result is true here
         bag[numberOfEntries] = newEntry;
         numberOfEntries++;
-        
-        
         return true;
-  
     }
 
     public T remove()
@@ -161,6 +160,7 @@ private static final int numberOfEntries;
                 counter++;
             }
         }
+        return counter;
     }
 
 
@@ -180,6 +180,12 @@ private static final int numberOfEntries;
             result[index] = bag[index];
         }
         return result;
+    }
+
+
+    public void intersection() {
+        // TODO Auto-generated method stub
+
     }
 
 
