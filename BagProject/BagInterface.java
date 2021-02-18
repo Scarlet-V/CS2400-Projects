@@ -3,16 +3,23 @@
     @author Miranda Silva, Samuel Chih
 */
 public interface BagInterface <T> {
+    /**Creates a new bag containing both the contents of the specified bag and the param
+     * @return A new bag with the union of the passed arguement and the specified bag
+     */
     public String union();
     {
 
     }
-
-    public void interaction();
+    /**Created a new bag containing the overlapping entries of two bags
+     * @return A new bag with the entries that appear in BOTH the specified bag and the passed arguement
+     */
+    public void intersection();
     {
 
     }
-
+    /**Creates a new bag containing the left over entries after removing the contents of one bag from the other
+     * @return A new bag with the non overlapping entries 
+     */
     public void difference();
     {
 
