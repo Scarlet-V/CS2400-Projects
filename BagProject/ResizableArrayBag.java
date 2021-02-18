@@ -4,8 +4,12 @@ import java.util.ArrayList;
 public class ResizableArrayBag<T> implements BagInterface<T> {
 private final T[] bag;
 private static final int numberOfEntries;
-    public ResizableArrayBag(){
-
+    public ResizableArrayBag()
+    {
+        numberOfEntries =0;
+        @SuppressWarnings("unchecked")
+        T[] tempBag=(T[]new Object[capacity]);
+        bag = tempBag;
     }
     public String union() {
         return null;
@@ -31,9 +35,9 @@ private static final int numberOfEntries;
     }
 
 
-    public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        return false;
+    public boolean isEmpty() 
+    {
+        return numberOfEntries == bag.length;
     }
 
 
@@ -81,6 +85,7 @@ private static final int numberOfEntries;
     }
 
 
+<<<<<<< Updated upstream
     public T[] toArray()
     {
         @SuppressWarnings("unchecked")
@@ -89,6 +94,17 @@ private static final int numberOfEntries;
         {
             result[index] = bag[index];
         }
+=======
+    public T[] toArray() 
+    {
+        @SuppressWarnings("unchecked")
+        T[] result= (T[])new Object[numberOfEntries];
+        for (int index = 0; index < numberOfEntries; index++)
+        {
+            result[index] = bag[index];
+        }
+        // TODO Auto-generated method stub
+>>>>>>> Stashed changes
         return result;
     }
 
