@@ -2,9 +2,12 @@ package BagProject;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**A class of bags whose entries are stored in a resizable array
  * @author Miranda Silva, Samuel Chih
  */
+=======
+>>>>>>> parent of 292fbe6 (Updating javadoc for resizableBag)
 =======
 >>>>>>> parent of 292fbe6 (Updating javadoc for resizableBag)
 =======
