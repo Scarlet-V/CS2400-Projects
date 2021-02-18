@@ -1,3 +1,4 @@
+package BagProject;
 /**A class of bags whose entries are stored in a resizable array
  * @author Miranda Silva, Samuel Chih
  */
