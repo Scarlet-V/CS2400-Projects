@@ -9,28 +9,28 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 
     private T[] bag;
     private static final int MAX_CAPACITY = 100;
-    private int  numberOfEntries = 100;
-    /**Creates an empty bag
-     * @param capacity the integer capacity desired
-     */
+    private boolean integrityOK;
+    private int numberOfEntries = 100;
+
     public ResizableArrayBag(int desiredCapacity)
     {
+        integrityOK=false;
         if(desiredCapacity<=MAX_CAPACITY)
         {
-            // the cast is safe because the new array contains null entries
+            
             @SuppressWarnings("unchecked")
-            T[] tempBag=(T[]new Object[capacity]); //unchecked cast
+            T[] tempBag = (T[])new Object[desiredCapacity]; 
             bag = tempBag;
-            boolean integrityOK = true;
+            integrityOK = true;
         }
         else
             throw new IllegalStateException("Attempt to create a bag whose"+"capacity exceeds allowed maximum.");
-    } /**end of constructor */
+    } 
     
     private void checkCapacity(int capacity)
     {
         if(capacity>MAX_CAPACITY)
-            throw new IllegalStateException("Attempt to create a bag whose"+"capacity exceeds allowed"+"maximum of"+MAX_CAPACITY)
+            throw new IllegalStateException("Attempt to create a bag whose"+"capacity exceeds allowed"+"maximum of"+MAX_CAPACITY);
     }
 
     private void doubleCapacity()
@@ -46,20 +46,23 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
             throw new SecurityException("ResizableArray object is corrupt.");
     }
 
-    public String union() {
+    public String union()
+    {
         return null;
-        // TODO Auto-generated method stub
+    
 
     }
 
-    public void interaction() {
-        // TODO Auto-generated method stub
+    public void interaction() 
+    {
+        
 
     }
 
 
-    public void difference() {
-        // TODO Auto-generated method stub
+    public void difference() 
+    {
+        
 
     }
 
@@ -75,29 +78,36 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
         return numberOfEntries == 0;
     }
 
-    /**Adds a new entry to this bag
-     * @param newEntry The object to be added as a new entry
-     */
     public boolean add(T newEntry) 
     {
-        checkIntegrity();
-        boolean result = true;
-        while (!isArrayFull()) 
+        if (integrityOK)
         {
-               Capacity ++;
+        boolean result = true;
+        if (isArrayFull())
+        {
+        result = false;
         }
-
-         // Assertion: result is true here
+        else
+        { // Assertion: result is true here
         bag[numberOfEntries] = newEntry;
         numberOfEntries++;
-        return true;
+        } // end if
+        return result;
+        }
+
+        else
+        throw new SecurityException("ArrayBag object is corrupt.");
     }
 
     public T remove()
     {
-        checkIntegrity();
-        T result=removeEntry(numberOfEntries-1);
-        return result;
+        T result = null;
+		if (firstNode !=null)
+		{
+			result=firstNode.getData();
+			firstNode=firstNode.getNextNode(); //Remove first node from chain
+			numberOfEntries--;
+        }
     }
 
     private T remove(int givenIndex) 
@@ -150,41 +160,59 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 
     public int getFrequencyOf(T anEntry) 
     {
-        checkIntegrity();
-        int counter =0;
+        int frequency = 0;
 
-        for (int index =0; index < numberOfEntries; index++)
-        {
-            if(anEntry.equals(bag[index]))
-            {
-                counter++;
-            }
-        }
-        return counter;
+		int counter=0;
+		Node currentNode=firstNode;
+		while ((counter<numberOfEntries)&&(currentNode !=null))
+		{
+			if(anEntry.equals(currentNode !=null))
+			{
+				frequency++;
+			}
+			counter++;
+			currentNode = currentNode.getNextNode();
+		}
+		return frequency;
     }
 
 
     public boolean contains(T anEntry) 
     {
-        checkIntegrity();
-        return getIndexOf(anEntry)>-1;
+        boolean found = false;
+		Node currentNode=firstNode;
+
+		while (!found && (currentNode !=null))
+		{
+			if (anEntry.equals(currentNode.getData()))
+				found = true;
+				else
+					currentNode =currentNode.getNextNode();
+		}
+		return found;
     }
 
 
     public T[] toArray()
     {
         @SuppressWarnings("unchecked")
-        T[] result = (T[])new Object[numberOfEntries];
-        for (int index =0; index < numberOfEntries; index++)
-        {
-            result[index] = bag[index];
-        }
-        return result;
+		T[] result=(T[])new Object[numberOfEntries];
+
+		int index=0;
+		Node currentNode=firstNode;
+		while((index<numberOfEntries)&&(currentNode !=null))
+		{
+			result[index] =currentNode.getData();
+			index++;
+			currentNode=currentNode.getNextNode();
+		}
+		return result;
     }
 
 
-    public void intersection() {
-        // TODO Auto-generated method stub
+    public void intersection() 
+    {
+        
 
     }
 

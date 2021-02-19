@@ -1,19 +1,8 @@
 package BagProject;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 /**A class of bags whose entries are stored in a resizable array
  * @author Miranda Silva, Samuel Chih
  */
-=======
->>>>>>> parent of 292fbe6 (Updating javadoc for resizableBag)
-=======
->>>>>>> parent of 292fbe6 (Updating javadoc for resizableBag)
-=======
->>>>>>> parent of 292fbe6 (Updating javadoc for resizableBag)
-=======
->>>>>>> parent of 292fbe6 (Updating javadoc for resizableBag)
+
 import java.util.ArrayList;
 
 public class ResizableArrayBag<T> implements BagInterface<T> {
@@ -25,7 +14,7 @@ private static final int numberOfEntries;
         {
             numberOfEntries =0;
             @SuppressWarnings("unchecked")
-            T[] tempBag=(T[]new Object[capacity]);
+            T[] tempBag=(T[])new Object[capacity];
             bag = tempBag;
             integrityOK=true;
         }
@@ -36,7 +25,7 @@ private static final int numberOfEntries;
     private void checkCapacity(int capacity)
     {
         if(capacity>MAX_CAPACITY)
-            throw new IllegalStateException("Attempt to create a bag whose"+"capacity exceeds allowed"+"maximum of"+MAX_CAPACITY)
+            throw new IllegalStateException("Attempt to create a bag whose"+"capacity exceeds allowed"+"maximum of"+MAX_CAPACITY);
     }
 
     private void doubleCapacity()
@@ -86,16 +75,14 @@ private static final int numberOfEntries;
     {
         checkIntegrity();
         boolean result = true;
-        if (isArrayFull()) 
+        while (!isArrayFull()) 
         {
-               doubleCapacity;
+               Capacity ++;
         }
 
          // Assertion: result is true here
         bag[numberOfEntries] = newEntry;
         numberOfEntries++;
-        
-        
         return true;
   
     }

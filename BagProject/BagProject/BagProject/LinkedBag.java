@@ -11,12 +11,12 @@ public class LinkedBag<T> implements BagInterface<T>
 		numberOfEntries=0;
 	}
 
-	private class Node
+	private class Node <T>
 	{
 
 	}
 	/**
-	 * testing 
+	 
 	 */
 	public boolean add(T newEntry)
 	{
@@ -79,7 +79,7 @@ public class LinkedBag<T> implements BagInterface<T>
 
 	public boolean isEmpty()
 	{
-		return numberOfEntries===0;
+		return numberOfEntries==0;
 
 	}
 
@@ -140,5 +140,26 @@ public class LinkedBag<T> implements BagInterface<T>
 			currentNode=currentNode.getNextNode();
 		}
 		return result;
+	}
+
+	@Override
+	public String union() 
+	{
+		
+		return null;
+	}
+
+	@Override
+	public void intersection() 
+	{
+		
+
+	}
+
+	@Override
+	public void difference() 
+	{
+		
+
 	}
 }
