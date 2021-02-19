@@ -15,7 +15,9 @@ public class LinkedBag<T> implements BagInterface<T>
 	{
 
 	}
-
+	/**
+	 * testing 
+	 */
 	public boolean add(T newEntry)
 	{
 		Node newNode = new Node (newEntry);
