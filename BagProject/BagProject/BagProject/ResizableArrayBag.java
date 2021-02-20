@@ -53,10 +53,17 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 
     }
 
-    public void interaction() 
+    public void intersection() 
     {
-        
-
+        for (int i=0;i<numberOfEntries;i++)
+        {
+            result.add(bag[i]);
+        }
+        for (Object ob : other.toArray())
+        {
+            result.add((T)ob);
+        }
+        return result;
     }
 
 
@@ -212,13 +219,6 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 			currentNode=currentNode.getNextNode();
 		}
 		return result;
-    }
-
-
-    public void intersection() 
-    {
-        
-
     }
 
 

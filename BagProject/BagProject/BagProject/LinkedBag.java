@@ -3,6 +3,7 @@ package BagProject;
 public class LinkedBag<T> implements BagInterface<T> 
 {
 	private Node firstNode;
+	private Node<T> bag;
 	private int numberOfEntries;
 
 	public LinkedBag()
@@ -11,18 +12,24 @@ public class LinkedBag<T> implements BagInterface<T>
 		numberOfEntries=0;
 	}
 
-	private class Node <T>
+	class Node <T>
 	{
+		T element;
+		Node nextNode;
 
+		Node (T e)
+		{
+			element=e;
+			nextNode=null;
+		}
 	}
 	/**
 	 
 	 */
-	public boolean add(T newEntry)
+	public void add(T newEntry)
 	{
 		Node newNode = new Node (newEntry);
 		newNode.next=firstNode;
-
 		firstNode = newNode;
 		numberOfEntries++;
 
@@ -80,7 +87,6 @@ public class LinkedBag<T> implements BagInterface<T>
 	public boolean isEmpty()
 	{
 		return numberOfEntries==0;
-
 	}
 
 	public int getCurrentSize()
