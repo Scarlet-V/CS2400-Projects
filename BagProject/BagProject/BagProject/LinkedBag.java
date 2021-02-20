@@ -14,25 +14,49 @@ public class LinkedBag<T> implements BagInterface<T>
 
 	class Node <T>
 	{
-		T element;
-		Node nextNode;
+		private T data;
+		private Node next;
 
-		Node (T e)
+		private Node(T dataPortion)
 		{
-			element=e;
-			nextNode=null;
+			this(dataPortion,null);
+		}
+
+		private Node(T dataPortion,Node nextNode)
+		{
+			data=dataPortion;
+			next=nextNode;
+		}
+
+		private T getData()
+		{
+			return data;
+		}
+
+		private void setData(T newData)
+		{
+			data=newData;
+		}
+		
+		private Node getNextNode()
+		{
+			return next;
+		}
+
+		private void setNextNode(Node nextNode)
+		{
+			next=nextNode;
 		}
 	}
 	/**
 	 
 	 */
-	public void add(T newEntry)
+	public boolean add(T newEntry)
 	{
 		Node newNode = new Node (newEntry);
 		newNode.next=firstNode;
 		firstNode = newNode;
 		numberOfEntries++;
-
 		return true;
 	}
 

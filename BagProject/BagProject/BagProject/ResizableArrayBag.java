@@ -97,7 +97,7 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
         boolean result = true;
         if (isArrayFull())
         {
-        result = false;
+        doubleCapacity();
         }
         else
         { // Assertion: result is true here
@@ -108,7 +108,7 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
         }
 
         else
-        throw new SecurityException("ArrayBag object is corrupt.");
+            throw new SecurityException("ArrayBag object is corrupt.");
     }
 
     public T remove()
