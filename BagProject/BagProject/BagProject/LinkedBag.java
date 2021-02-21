@@ -191,7 +191,7 @@ public class LinkedBag<T> implements BagInterface<T>
 		{
 		result.add(elem);
 		}
-		T[] others = anothererBag.toArray();
+		T[] others = anotherBag.toArray();
 		for (T elem : others)
 		{
 			if(result.contains(elem))

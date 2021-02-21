@@ -213,7 +213,7 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     @Override
     public BagInterface<T> union(BagInterface<T> anotherBag) 
     {
-        BagInterface < T > result = new ResizeableArrayBag < >();
+        BagInterface < T > result = new ResizableArrayBag<>();
         T[] mine = this.toArray();
         for (T elem : mine) 
         {
@@ -226,19 +226,18 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         }
         return result;
     }
-    }
-
+    
     @Override
     public BagInterface<T> intersection(BagInterface<T> anotherBag) 
     {
-        BagInterface < T > result = new ResizeableArrayBag < >();
-        BagInterface < T > finalResult = new ResizeableArrayBag < >();
+        BagInterface < T > result = new ResizableArrayBag<>();
+        BagInterface < T > finalResult = new ResizableArrayBag<>();
         T[] mine = this.toArray();
         for (T elem : mine) 
         {
             result.add(elem);
         }
-        T[] others = anothererBag.toArray();
+        T[] others = anotherBag.toArray();
         for (T elem : others) 
         {
             if(result.contains(elem))
@@ -253,7 +252,7 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     @Override
     public BagInterface<T> difference(BagInterface<T> anotherBag) 
     {
-        BagInterface < T > result = new ResizeableArrayBag < >();
+        BagInterface < T > result = new ResizableArrayBag<>();
         T[] mine = this.toArray();
         for (T elem : mine) 
         {
