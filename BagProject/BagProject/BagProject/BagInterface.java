@@ -1,4 +1,4 @@
-package BagProject;
+package BagProject.BagProject;
 /**
     An interface that displays the operations of a bag containing items
     @author Miranda Silva, Samuel Chih
@@ -67,5 +67,26 @@ public interface BagInterface <T> {
      */
     public T[] toArray();
     
+    /**Creates a new bag that has both the contents of the first bag and the second bag
+     * @param anotherBag The bag that is to be added to the primary bag
+     * @return The bag that has both the contents of anotherBag and the primary bag
+     */
+
+    public BagInterface<T> union(BagInterface<T> anotherBag);
+
+    /**Creates a new bag that contains the items that occur in both anotherBag and the primary bag
+     * @param anotherBag The bag that is to be compared to the primary bag
+     * @return The bag that returns the items that occur in both bags
+     */
+
+    public BagInterface<T> intersection(BagInterface<T> anotherBag);
+
+    /**Creates a bag of items that would occur if the similar items from both bags were taken out
+     * @param anotherBag The bag that is to be removed
+     * @return The new bag with the items taken out
+     */
+
+    public BagInterface<T> difference(BagInterface<T> anotherBag);
+
 }
 
