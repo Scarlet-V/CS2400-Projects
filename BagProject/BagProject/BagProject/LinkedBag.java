@@ -3,16 +3,16 @@ package BagProject.BagProject;
 public class LinkedBag<T> implements BagInterface<T> 
 {
 	private Node firstNode;
-	private Node<T> bag;
 	private int numberOfEntries;
-	private T anEntry;
 
-	public LinkedBag() {
+
+	public LinkedBag() 
+	{
 		firstNode = null;
 		numberOfEntries = 0;
 	}
 
-	class Node {
+	private class Node {
 		private T data;
 		private Node next;
 
@@ -25,21 +25,6 @@ public class LinkedBag<T> implements BagInterface<T>
 			next = nextNode;
 		}
 
-		private T getData() {
-			return data;
-		}
-
-		private void setData(T newData) {
-			data = newData;
-		}
-
-		private Node getNextNode() {
-			return next;
-		}
-
-		private void setNextNode(Node nextNode) {
-			next = nextNode;
-		}
 	}
 
 	public boolean add(T newEntry) {
@@ -53,39 +38,40 @@ public class LinkedBag<T> implements BagInterface<T>
 	public T remove() {
 		T result = null;
 		if (firstNode != null) {
-			result = firstNode.getData();
-			firstNode = firstNode.getNextNode(); // Remove first node from chain
+			result = firstNode.data;
+			firstNode = firstNode.next; // Remove first node from chain
 			numberOfEntries--;
 		} // end if
 
 		return result;
 	} // end remove
 
-	private Node getReferenceTo(Node currentNode, T anEntry) {
+	private Node getReferenceTo(T anEntry) 
+	{
 		boolean found = false;
-		Node current = firstNode;
+		Node currentNode = firstNode;
 
 		while (!found && (currentNode != null)) 
 		{
-			if (anEntry.equals(currentNode.getData()))
+			if (anEntry.equals(currentNode.data))
 				found = true;
 			else
-				currentNode = currentNode.getNextNode();
+				currentNode = currentNode.next;
 		} // end while
 		return currentNode;
 	} // end getReferenceTo
 
-	public boolean remove(T anEntry) {
-		this.anEntry = anEntry;
+	public boolean remove(T anEntry) 
+	{
 		boolean result = false;
 		Node nodeN = getReferenceTo(anEntry);
 
 		if  (nodeN !=null)
 		{
 			// Replace located entry with entry in first node
-			nodeN.setData(firstNode.getData());
+			nodeN.data=firstNode.data;
 			// Remove first node
-			firstNode = firstNode.getNextNode();
+			firstNode = firstNode.next;
 			numberOfEntries--;
 
 			result=true;
@@ -123,7 +109,7 @@ public class LinkedBag<T> implements BagInterface<T>
 				frequency++;
 			}
 			counter++;
-			currentNode = currentNode.getNextNode();
+			currentNode = currentNode.next;
 		}
 		return frequency;
 	}
@@ -135,10 +121,10 @@ public class LinkedBag<T> implements BagInterface<T>
 
 		while (!found && (currentNode !=null))
 		{
-			if (anEntry.equals(currentNode.getData()))
+			if (anEntry.equals(currentNode.data))
 				found = true;
 				else
-					currentNode =currentNode.getNextNode();
+					currentNode =currentNode.next;
 		}
 		return found;
 	}
@@ -151,9 +137,9 @@ public class LinkedBag<T> implements BagInterface<T>
 		Node currentNode=firstNode;
 		while((index<numberOfEntries)&&(currentNode !=null))
 		{
-			result[index] =currentNode.getData();
+			result[index] =currentNode.data;
 			index++;
-			currentNode=currentNode.getNextNode();
+			currentNode=currentNode.next;
 		}
 		return result;
 	}
