@@ -2,11 +2,12 @@ package BagProject.BagProject;
 /**A class of bags whose entries are stored in a resizable array
  * @author Miranda Silva, Samuel Chih
  */
-import java.util.ArrayList;
+
 import java.util.Arrays;
 
-public class ResizableArrayBag<T> implements BagInterface<T> {
-
+public class ResizableArrayBag<T> implements BagInterface<T> 
+{
+    private Node firstNode;
     private T[] bag;
     private static final int MAX_CAPACITY = 100;
     private boolean integrityOK;
@@ -14,6 +15,7 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 
     public ResizableArrayBag(int desiredCapacity)
     {
+        firstNode = null;
         integrityOK=false;
         if(desiredCapacity<=MAX_CAPACITY)
         {
@@ -27,6 +29,11 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
             throw new IllegalStateException("Attempt to create a bag whose"+"capacity exceeds allowed maximum.");
     } 
     
+    public ResizableArrayBag() 
+    {
+        this(MAX_CAPACITY);
+    }
+
     private void checkCapacity(int capacity)
     {
         if(capacity>MAX_CAPACITY)
@@ -55,7 +62,7 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 
     public void intersection() 
     {
-        for (int i=0;i<numberOfEntries;i++)
+      /**  for (int i=0;i<numberOfEntries;i++)
         {
             result.add(bag[i]);
         }
@@ -63,7 +70,7 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
         {
             result.add((T)ob);
         }
-        return result;
+        return result;*/
     }
 
 
@@ -113,16 +120,11 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 
     public T remove()
     {
-        T result = null;
-		if (firstNode !=null)
-		{
-			result=firstNode.getData();
-			firstNode=firstNode.getNextNode(); //Remove first node from chain
-			numberOfEntries--;
-        }
+        T result = removeEntry(numberOfEntries - 1);
+        return result;
     }
 
-    private T remove(int givenIndex) 
+    private T removeEntry(int givenIndex) 
     {
         T result=null;
 
@@ -183,7 +185,7 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 				frequency++;
 			}
 			counter++;
-			currentNode = currentNode.getNextNode();
+			currentNode = currentNode.next;
 		}
 		return frequency;
     }
@@ -196,10 +198,10 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 
 		while (!found && (currentNode !=null))
 		{
-			if (anEntry.equals(currentNode.getData()))
+			if (anEntry.equals(currentNode.data))
 				found = true;
 				else
-					currentNode =currentNode.getNextNode();
+					currentNode =currentNode.next;
 		}
 		return found;
     }
@@ -214,32 +216,80 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 		Node currentNode=firstNode;
 		while((index<numberOfEntries)&&(currentNode !=null))
 		{
-			result[index] =currentNode.getData();
+			result[index] =currentNode.data;
 			index++;
-			currentNode=currentNode.getNextNode();
+			currentNode=currentNode.next;
 		}
 		return result;
     }
 
+    private class Node {
+		private T data;
+		private Node next;
+
+		private Node(T dataPortion) {
+			this(dataPortion, null);
+		}
+
+		private Node(T dataPortion, Node nextNode) {
+			data = dataPortion;
+			next = nextNode;
+		}
+	}
+
     @Override
-    public BagInterface<T> union(BagInterface<T> anotherBag) {
-        // TODO Auto-generated method stub
-        return null;
+    public BagInterface<T> union(BagInterface<T> anotherBag) 
+    {
+   
+        ResizableArrayBag<T> result = new ResizableArrayBag<T>();
+        for (int i = 0; i < numberOfEntries; i++) 
+        {
+              result.add(bag[i]);
+        }
+        for (Object ob : anotherBag.toArray()) 
+        {
+             result.add((T) ob);
+        }
+        return result;
     }
 
     @Override
     public BagInterface<T> intersection(BagInterface<T> anotherBag) 
     {
-        // TODO Auto-generated method stub
-        return null;
+        ResizableArrayBag<T> result = new ResizableArrayBag<T>();
+        for (int i = 0; i < numberOfEntries; i++) 
+        {
+            T item = bag[i];
+            if (!result.contains(item) && anotherBag.contains(item)) 
+            {
+                  int common_count = Math.min(getFrequencyOf(item),anotherBag.getFrequencyOf(item));
+                  for (int j = 0; j < common_count; j++) 
+                  {
+                        result.add(item);
+                  }
+            }
+        }
+            return null;
     }
 
     @Override
-    public BagInterface<T> difference(BagInterface<T> anotherBag) {
-        // TODO Auto-generated method stub
-        return null;
+    public BagInterface<T> difference(BagInterface<T> anotherBag) 
+    {
+        {
+            ResizableArrayBag<T> result = new ResizableArrayBag<T>();
+            for (int i = 0; i < numberOfEntries; i++) 
+            {
+                  T item = bag[i];
+                  if (!result.contains(item)) 
+                  {
+                        int difference = getFrequencyOf(item) - anotherBag.getFrequencyOf(item);
+                        for (int j = 0; j < difference; j++) 
+                        {
+                              result.add(item);
+                        }
+                  }
+            }
+            return result;
+        }
     }
-
-
-
 }

@@ -166,20 +166,20 @@ public class LinkedBag<T> implements BagInterface<T>
 	}
 
 	@Override
-	public BagInterface<T> union(BagInterface<T> anotherBag) {
-		// TODO Auto-generated method stub
+	public BagInterface<T> union(BagInterface<T> anotherBag) 
+	{
 		return null;
 	}
 
 	@Override
-	public BagInterface<T> intersection(BagInterface<T> anotherBag) {
-		// TODO Auto-generated method stub
+	public BagInterface<T> intersection(BagInterface<T> anotherBag) 
+	{
 		return null;
 	}
 
 	@Override
-	public BagInterface<T> difference(BagInterface<T> anotherBag) {
-		// TODO Auto-generated method stub
+	public BagInterface<T> difference(BagInterface<T> anotherBag) 
+	{
 		return null;
 	}
 }
