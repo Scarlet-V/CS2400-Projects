@@ -53,25 +53,6 @@ public class ResizableArrayBag<T> implements BagInterface<T>
             throw new SecurityException("ResizableArray object is corrupt.");
     }
 
-    public String union()
-    {
-        return null;
-    
-
-    }
-
-    public void intersection() 
-    {
-     
-    }
-
-
-    public void difference() 
-    {
-        
-
-    }
-
 
     public int getCurrentSize() 
     {
@@ -99,10 +80,10 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         doubleCapacity();
         }
         else
-        { // Assertion: result is true here
+        { 
         bag[numberOfEntries] = newEntry;
         numberOfEntries++;
-        } // end if
+        } 
         return result;
         }
 

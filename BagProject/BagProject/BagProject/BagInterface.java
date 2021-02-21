@@ -4,21 +4,7 @@ package BagProject.BagProject;
     @author Miranda Silva, Samuel Chih
 */
 public interface BagInterface <T> {
-    /**Creates a new bag containing both the contents of the specified bag and the param
-     * @return A new bag with the union of the passed arguement and the specified bag
-     */
-    public String union();
-    
-    /**Created a new bag containing the overlapping entries of two bags
-     * @return A new bag with the entries that appear in BOTH the specified bag and the passed arguement
-     */
-    public void intersection();
-    
-    /**Creates a new bag containing the left over entries after removing the contents of one bag from the other
-     * @return A new bag with the non overlapping entries 
-     */
-    public void difference();
- 
+     
     /**Gets the current number of entries in the bag
      * @return The integer number of entries currently in the bag
      */
@@ -76,14 +62,14 @@ public interface BagInterface <T> {
 
     /**Creates a new bag that contains the items that occur in both anotherBag and the primary bag
      * @param anotherBag The bag that is to be compared to the primary bag
-     * @return The bag that returns the items that occur in both bags
+     * @return A new bag with the entries that appear in BOTH the specified bag and the passed arguement
      */
 
     public BagInterface<T> intersection(BagInterface<T> anotherBag);
 
     /**Creates a bag of items that would occur if the similar items from both bags were taken out
      * @param anotherBag The bag that is to be removed
-     * @return The new bag with the items taken out
+     * @return A new bag with the non overlapping entries
      */
 
     public BagInterface<T> difference(BagInterface<T> anotherBag);

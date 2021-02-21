@@ -145,27 +145,6 @@ public class LinkedBag<T> implements BagInterface<T>
 	}
 
 	@Override
-	public String union() 
-	{
-		
-		return null;
-	}
-
-	@Override
-	public void intersection() 
-	{
-		
-
-	}
-
-	@Override
-	public void difference() 
-	{
-		
-
-	}
-
-	@Override
 	public BagInterface<T> union(BagInterface<T> anotherBag) 
 	{
 		BagInterface < T > result = new LinkedBag < >();
