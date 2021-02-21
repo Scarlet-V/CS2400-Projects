@@ -1,4 +1,4 @@
-package BagProject;
+package BagProject.BagProject;
 /**A class of bags whose entries are stored in a resizable array
  * @author Miranda Silva, Samuel Chih
  */
@@ -219,6 +219,25 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 			currentNode=currentNode.getNextNode();
 		}
 		return result;
+    }
+
+    @Override
+    public BagInterface<T> union(BagInterface<T> anotherBag) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public BagInterface<T> intersection(BagInterface<T> anotherBag) 
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public BagInterface<T> difference(BagInterface<T> anotherBag) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 

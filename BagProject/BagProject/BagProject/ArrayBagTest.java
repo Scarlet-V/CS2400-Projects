@@ -1,4 +1,4 @@
-package BagProject;
+package BagProject.BagProject;
 import java.util.Arrays;
 public class ArrayBagTest 
 {
