@@ -62,15 +62,7 @@ public class ResizableArrayBag<T> implements BagInterface<T>
 
     public void intersection() 
     {
-      /**  for (int i=0;i<numberOfEntries;i++)
-        {
-            result.add(bag[i]);
-        }
-        for (Object ob : other.toArray())
-        {
-            result.add((T)ob);
-        }
-        return result;*/
+     
     }
 
 
@@ -240,56 +232,60 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     @Override
     public BagInterface<T> union(BagInterface<T> anotherBag) 
     {
-   
-        ResizableArrayBag<T> result = new ResizableArrayBag<T>();
-        for (int i = 0; i < numberOfEntries; i++) 
+        BagInterface < T > result = new ResizeableArrayBag < >();
+        T[] mine = this.toArray();
+        for (T elem : mine) 
         {
-              result.add(bag[i]);
+            result.add(elem);
         }
-        for (Object ob : anotherBag.toArray()) 
+        T[] others = anotherBag.toArray();
+        for (T elem : others) 
         {
-             result.add((T) ob);
+            result.add(elem);
         }
         return result;
+    }
     }
 
     @Override
     public BagInterface<T> intersection(BagInterface<T> anotherBag) 
     {
-        ResizableArrayBag<T> result = new ResizableArrayBag<T>();
-        for (int i = 0; i < numberOfEntries; i++) 
+        BagInterface < T > result = new ResizeableArrayBag < >();
+        BagInterface < T > finalResult = new ResizeableArrayBag < >();
+        T[] mine = this.toArray();
+        for (T elem : mine) 
         {
-            T item = bag[i];
-            if (!result.contains(item) && anotherBag.contains(item)) 
-            {
-                  int common_count = Math.min(getFrequencyOf(item),anotherBag.getFrequencyOf(item));
-                  for (int j = 0; j < common_count; j++) 
-                  {
-                        result.add(item);
-                  }
-            }
+            result.add(elem);
         }
-            return null;
+        T[] others = anothererBag.toArray();
+        for (T elem : others) 
+        {
+            if(result.contains(elem))
+        {
+                finalResult.add(elem);
+        }
+        }
+        return finalResult;
     }
+    
 
     @Override
     public BagInterface<T> difference(BagInterface<T> anotherBag) 
     {
+        BagInterface < T > result = new ResizeableArrayBag < >();
+        T[] mine = this.toArray();
+        for (T elem : mine) 
         {
-            ResizableArrayBag<T> result = new ResizableArrayBag<T>();
-            for (int i = 0; i < numberOfEntries; i++) 
-            {
-                  T item = bag[i];
-                  if (!result.contains(item)) 
-                  {
-                        int difference = getFrequencyOf(item) - anotherBag.getFrequencyOf(item);
-                        for (int j = 0; j < difference; j++) 
-                        {
-                              result.add(item);
-                        }
-                  }
-            }
-            return result;
+        result.add(elem);
         }
-    }
+        T[] others = anotherBag.toArray();
+        for (T elem : others) 
+        {
+        if(result.contains(elem))
+        {
+        result.remove(elem);
+        }
+        }
+        return result;
+        }
 }
