@@ -1,4 +1,4 @@
-package BagProject;
+package BagProject.BagProject;
 
 public class LinkedBagTest {
 

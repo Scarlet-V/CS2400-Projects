@@ -1,105 +1,91 @@
-package BagProject;
+package BagProject.BagProject;
 
 public class LinkedBag<T> implements BagInterface<T> 
 {
 	private Node firstNode;
 	private Node<T> bag;
 	private int numberOfEntries;
+	private T anEntry;
 
-	public LinkedBag()
-	{
-		firstNode=null;
-		numberOfEntries=0;
+	public LinkedBag() {
+		firstNode = null;
+		numberOfEntries = 0;
 	}
 
-	class Node <T>
-	{
+	class Node {
 		private T data;
 		private Node next;
 
-		private Node(T dataPortion)
-		{
-			this(dataPortion,null);
+		private Node(T dataPortion) {
+			this(dataPortion, null);
 		}
 
-		private Node(T dataPortion,Node nextNode)
-		{
-			data=dataPortion;
-			next=nextNode;
+		private Node(T dataPortion, Node nextNode) {
+			data = dataPortion;
+			next = nextNode;
 		}
 
-		private T getData()
-		{
+		private T getData() {
 			return data;
 		}
 
-		private void setData(T newData)
-		{
-			data=newData;
+		private void setData(T newData) {
+			data = newData;
 		}
-		
-		private Node getNextNode()
-		{
+
+		private Node getNextNode() {
 			return next;
 		}
 
-		private void setNextNode(Node nextNode)
-		{
-			next=nextNode;
+		private void setNextNode(Node nextNode) {
+			next = nextNode;
 		}
 	}
-	/**
-	 
-	 */
-	public boolean add(T newEntry)
-	{
-		Node newNode = new Node (newEntry);
-		newNode.next=firstNode;
+
+	public boolean add(T newEntry) {
+		Node newNode = new Node(newEntry);
+		newNode.next = firstNode;
 		firstNode = newNode;
 		numberOfEntries++;
 		return true;
 	}
 
-	public T remove()
-	{
+	public T remove() {
 		T result = null;
-		if (firstNode !=null)
-		{
-			result=firstNode.getData();
-			firstNode=firstNode.getNextNode(); //Remove first node from chain
+		if (firstNode != null) {
+			result = firstNode.getData();
+			firstNode = firstNode.getNextNode(); // Remove first node from chain
 			numberOfEntries--;
-		} //end if
+		} // end if
 
 		return result;
-	} //end remove
+	} // end remove
 
-	private Node getReferenceTo(T anEntry)
-	{
+	private Node getReferenceTo(Node currentNode, T anEntry) {
 		boolean found = false;
 		Node current = firstNode;
 
-		while(!found && (currentNode !=null))
+		while (!found && (currentNode != null)) 
 		{
 			if (anEntry.equals(currentNode.getData()))
-				found=true;
+				found = true;
 			else
 				currentNode = currentNode.getNextNode();
-		} //end while
+		} // end while
 		return currentNode;
-	} //end getReferenceTo
+	} // end getReferenceTo
 
-	public boolean remove(T anEntry)
-	{
+	public boolean remove(T anEntry) {
+		this.anEntry = anEntry;
 		boolean result = false;
 		Node nodeN = getReferenceTo(anEntry);
 
-		if  (nodeN = getReferenceTo(anEntry))
+		if  (nodeN !=null)
 		{
 			// Replace located entry with entry in first node
 			nodeN.setData(firstNode.getData());
 			// Remove first node
 			firstNode = firstNode.getNextNode();
-
 			numberOfEntries--;
 
 			result=true;
