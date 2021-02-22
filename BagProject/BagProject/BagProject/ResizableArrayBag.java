@@ -4,14 +4,14 @@ package BagProject.BagProject;
  */
 
 import java.util.Arrays;
+import java.util.ArrayList;
 
-public class ResizableArrayBag<T> implements BagInterface<T> 
-{
+public class ResizableArrayBag<T> implements BagInterface<T> {
     private Node firstNode;
     private T[] bag;
-    private static final int MAX_CAPACITY = 100;
+    private static final int MAX_CAPACITY = 1000;
     private boolean integrityOK;
-    private int numberOfEntries = 100;
+    private int numberOfEntries=0;
 
     public ResizableArrayBag(int desiredCapacity)
     {
@@ -28,11 +28,16 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         else
             throw new IllegalStateException("Attempt to create a bag whose"+"capacity exceeds allowed maximum.");
     } 
-    
-    public ResizableArrayBag() 
-    {
-        this(MAX_CAPACITY);
+    public ResizableArrayBag(){
+        firstNode = null;
+        integrityOK=false;
+            @SuppressWarnings("unchecked")
+            T[] tempBag = (T[])new Object[MAX_CAPACITY]; 
+            bag = tempBag;
+            integrityOK = true;
+        
     }
+
 
     private void checkCapacity(int capacity)
     {
@@ -72,21 +77,17 @@ public class ResizableArrayBag<T> implements BagInterface<T>
 
     public boolean add(T newEntry) 
     {
-        if (integrityOK)
-        {
+        if (integrityOK){
         boolean result = true;
-        if (isArrayFull())
-        {
+        if (isArrayFull()){
         doubleCapacity();
         }
-        else
-        { 
+        else{ 
         bag[numberOfEntries] = newEntry;
         numberOfEntries++;
         } 
         return result;
         }
-
         else
             throw new SecurityException("ArrayBag object is corrupt.");
     }
@@ -179,12 +180,22 @@ public class ResizableArrayBag<T> implements BagInterface<T>
 		return found;
     }
 
+    public T[] toArray() {
+      T[] copy = (T[])new Object[numberOfEntries];
+        for (int i = 0; i < this.numberOfEntries; i++) {
+            if(bag[i]!=null){
+                copy[i] = bag[i];
+            } else{
+                i++;
+            }
+        }
+        return copy;
+    }
 
-    public T[] toArray()
+/*     public T[] toArray()
     {
         @SuppressWarnings("unchecked")
 		T[] result=(T[])new Object[numberOfEntries];
-
 		int index=0;
 		Node currentNode=firstNode;
 		while((index<numberOfEntries)&&(currentNode !=null))
@@ -194,7 +205,7 @@ public class ResizableArrayBag<T> implements BagInterface<T>
 			currentNode=currentNode.next;
 		}
 		return result;
-    }
+    } */
 
     private class Node {
 		private T data;
@@ -248,6 +259,46 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         return finalResult;
     }
     
+    public BagInterface<T> difference(BagInterface<T> anotherBag) {
+        BagInterface <T> result = new ResizableArrayBag<>();
+        T[] mine = this.toArray();
+        T[] others = anotherBag.toArray();
+        a:
+        for (int i=0; i<mine.length;i++) {
+            boolean temp =true;
+            for (int k=0; k<others.length;k++){
+                if(mine[i]==others[k]){
+                    temp=false;
+                }
+                for (int j=mine.length-1; j>=0;j--){ 
+                 if((k==others.length-1) &&temp==true&&mine[i]!=mine[j]){
+                    result.add(mine[i]);
+                    break a;
+                 }
+                }
+            }
+        }
+/*         a:
+        for (T i : mine) {
+            b:
+            for (T k : others) {
+                if(i!=k){
+                    System.out.println("I: "+i+", K out: "+k);
+                    System.out.println("mine: "+mine+", other out: "+others);
+                    result.add(i);
+                    break a;
+                }
+                else{
+                    break ;
+                }  
+                
+             }
+        } */
+/*         for (T elem : mine) {
+            result.add(elem);
+        } */
+        return result;
+    }
 
     @Override
     public BagInterface<T> difference(BagInterface<T> anotherBag) 
@@ -267,5 +318,6 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         }
         }
         return result;
-        }
+        } 
+       
 }

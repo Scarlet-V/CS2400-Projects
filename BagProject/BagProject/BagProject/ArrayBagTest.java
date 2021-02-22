@@ -7,24 +7,32 @@ public class ArrayBagTest
 	{
 		BagInterface<String> b1 = new ResizableArrayBag<String>();
 		BagInterface<String> b2 = new ResizableArrayBag<String>();
-		b1.add("h");
-		b1.add("e");
-		b1.add("l");
-		b1.add("l");
-		b1.add("o");
-		b2.add("h");
-		b2.add("o");
-		b2.add("w");
-		b2.add("y");
-		b2.add("o");
-		b2.add("u");
+
+		b1.add("Hello");//a
+		b1.add("Hello");//a
+		b1.add("Hello");//a
+		b1.add("how are");//b
+		b1.add("you?");//c
+		b1.add("ハワユ");//e
+
+		b2.add("how are");//b
+		b2.add("how are");//b
+		b2.add("/");//d
+		b2.add("/");
+		b2.add("/");
+		b2.add("ハワユ");//e
+		//difference should only "Hello" "you?" "ハワユ"
+
+		// b2.add("Hello");
+		// b2.add("/");
+		// b2.add("ハワユ");
 
 		System.out.println("bag1: "+Arrays.toString(b1.toArray()));
 		System.out.println("bag2: "+Arrays.toString(b2.toArray()));
 
-		System.out.println("bag1 union bag2: "+ Arrays.toString(b1.union(b2).toArray()));
-		System.out.println("bag1 intersection bag2: "+ Arrays.toString(b1.intersection(b2).toArray()));
-		System.out.println("bag1 difference bag2: "+ Arrays.toString(b1.difference(b2).toArray()));
+		//System.out.println("bag1 union bag2: "+ Arrays.toString(b1.union(b2).toArray()));
+		//System.out.println("bag1 intersection bag2: "+ Arrays.toString(b1.intersection(b2).toArray()));
+		System.out.println("bag1 difference bag2: "+ Arrays.toString(b2.difference(b1).toArray()));
 	}
 
 }
