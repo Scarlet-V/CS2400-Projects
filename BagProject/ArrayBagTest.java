@@ -1,8 +1,6 @@
-package BagProject.BagProject;
 import java.util.Arrays;
 public class ArrayBagTest 
 {
-
 	public static void main(String[] args) 
 	{
 		BagInterface<String> b1 = new ResizableArrayBag<String>();
@@ -23,15 +21,11 @@ public class ArrayBagTest
 		b2.add("ハワユ");//e
 		//difference should only "Hello" "you?" "ハワユ"
 
-		// b2.add("Hello");
-		// b2.add("/");
-		// b2.add("ハワユ");
-
 		System.out.println("bag1: "+Arrays.toString(b1.toArray()));
 		System.out.println("bag2: "+Arrays.toString(b2.toArray()));
 
-		//System.out.println("bag1 union bag2: "+ Arrays.toString(b1.union(b2).toArray()));
-		//System.out.println("bag1 intersection bag2: "+ Arrays.toString(b1.intersection(b2).toArray()));
+		System.out.println("bag1 union bag2: "+ Arrays.toString(b1.union(b2).toArray()));
+		System.out.println("bag1 intersection bag2: "+ Arrays.toString(b1.intersection(b2).toArray()));
 		System.out.println("bag1 difference bag2: "+ Arrays.toString(b2.difference(b1).toArray()));
 	}
 

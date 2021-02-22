@@ -1,4 +1,3 @@
-package BagProject.BagProject;
 /**
     An interface that displays the operations of a bag containing items
     @author Miranda Silva, Samuel Chih

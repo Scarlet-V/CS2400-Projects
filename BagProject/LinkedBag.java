@@ -1,5 +1,3 @@
-package BagProject.BagProject;
-
 public class LinkedBag<T> implements BagInterface<T> 
 {
 	private Node firstNode;

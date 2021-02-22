@@ -1,10 +1,8 @@
-package BagProject.BagProject;
 /**A class of bags whose entries are stored in a resizable array
  * @author Miranda Silva, Samuel Chih
  */
 
 import java.util.Arrays;
-import java.util.ArrayList;
 
 public class ResizableArrayBag<T> implements BagInterface<T> {
     private Node firstNode;
@@ -270,12 +268,13 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
                 if(mine[i]==others[k]){
                     temp=false;
                 }
-                
+                if(temp==true){
                 for (int j=mine.length-1; j>=0;j--){ 
-                 if((k==others.length-1) &&temp==true&&mine[i]!=mine[j]){
+                 if((k==others.length-1)&&mine[i]!=mine[j]){
                     result.add(mine[i]);
                     break a;
                  }
+                }
                 }
             }
         }
