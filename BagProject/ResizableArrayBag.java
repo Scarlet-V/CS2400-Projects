@@ -270,6 +270,7 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
                 if(mine[i]==others[k]){
                     temp=false;
                 }
+                
                 for (int j=mine.length-1; j>=0;j--){ 
                  if((k==others.length-1) &&temp==true&&mine[i]!=mine[j]){
                     result.add(mine[i]);
@@ -278,7 +279,8 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
                 }
             }
         }
-/*         a:
+        return result;
+        /*         a:
         for (T i : mine) {
             b:
             for (T k : others) {
@@ -297,10 +299,9 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 /*         for (T elem : mine) {
             result.add(elem);
         } */
-        return result;
     }
 
-    @Override
+    /* @Override
     public BagInterface<T> difference(BagInterface<T> anotherBag) 
     {
         BagInterface < T > result = new ResizableArrayBag<>();
@@ -318,6 +319,6 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
         }
         }
         return result;
-        } 
+        }  */
        
 }
