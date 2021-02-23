@@ -165,16 +165,17 @@ public class LinkedBag<T> implements BagInterface<T>
 		BagInterface < T > result = new LinkedBag < >();
       	BagInterface < T > finalResult = new LinkedBag < >();
 		T[] mine = this.toArray();
-		for (T elem : mine) 
-		{
-		result.add(elem);
-		}
 		T[] others = anotherBag.toArray();
 		for (T elem : others) 
 		{
-			if(result.contains(elem))
+		result.add(elem);
+		}
+
+		for (T elem1 : mine) 
 		{
-				finalResult.add(elem);
+			if(result.contains(elem1))
+		{
+				finalResult.add(elem1);
 		}
 		}
 		return finalResult;

@@ -33,7 +33,6 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
             T[] tempBag = (T[])new Object[MAX_CAPACITY]; 
             bag = tempBag;
             integrityOK = true;
-        
     }
 
 
@@ -183,8 +182,6 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
         for (int i = 0; i < this.numberOfEntries; i++) {
             if(bag[i]!=null){
                 copy[i] = bag[i];
-            } else{
-                i++;
             }
         }
         return copy;
@@ -236,7 +233,7 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
         return result;
     }
     
-    @Override
+/*     @Override
     public BagInterface<T> intersection(BagInterface<T> anotherBag) 
     {
         BagInterface < T > result = new ResizableArrayBag<>();
@@ -255,27 +252,49 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
         }
         }
         return finalResult;
-    }
+    } */
     
-    public BagInterface<T> difference(BagInterface<T> anotherBag) {
+    @Override
+    public BagInterface<T> intersection(BagInterface<T> anotherBag) {
         BagInterface <T> result = new ResizableArrayBag<>();
         T[] mine = this.toArray();
         T[] others = anotherBag.toArray();
-        a:
+
         for (int i=0; i<mine.length;i++) {
             boolean temp =true;
+            b:
             for (int k=0; k<others.length;k++){
                 if(mine[i]==others[k]){
                     temp=false;
                 }
-                if(temp==true){
-                for (int j=mine.length-1; j>=0;j--){ 
-                 if((k==others.length-1)&&mine[i]!=mine[j]){
+                if(temp==false&&k==others.length-1){
                     result.add(mine[i]);
-                    break a;
+                    break b;
+                }
+            }
+        }
+        return result;
+    }
+    
+    @Override
+    public BagInterface<T> difference(BagInterface<T> anotherBag) {
+        BagInterface <T> result = new ResizableArrayBag<>();
+        T[] mine = this.toArray();
+        T[] others = anotherBag.toArray();
+ 
+        for (int i=0; i<mine.length;i++) {
+            boolean temp =true;
+            b:
+            for (int k=0; k<others.length;k++){
+                if(mine[i]==others[k]){
+                    temp=false;
+                    others[k]=null;
+                }
+                //System.out.println("I: "+mine[i]+", K out: "+others[k]);
+                 if((k==others.length-1)&&temp==true){
+                    result.add(mine[i]);
+                    break b;
                  }
-                }
-                }
             }
         }
         return result;
@@ -295,7 +314,7 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
                 
              }
         } */
-/*         for (T elem : mine) {
+        /* for (T elem : mine) {
             result.add(elem);
         } */
     }
