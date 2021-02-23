@@ -364,45 +364,5 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
             }
         }
         return result;
-        /*         a:
-        for (T i : mine) {
-            b:
-            for (T k : others) {
-                if(i!=k){
-                    System.out.println("I: "+i+", K out: "+k);
-                    System.out.println("mine: "+mine+", other out: "+others);
-                    result.add(i);
-                    break a;
-                }
-                else{
-                    break ;
-                }  
-                
-             }
-        } */
-        /* for (T elem : mine) {
-            result.add(elem);
-        } */
-    }
-
-    /* @Override
-    public BagInterface<T> difference(BagInterface<T> anotherBag) 
-    {
-        BagInterface < T > result = new ResizableArrayBag<>();
-        T[] mine = this.toArray();
-        for (T elem : mine) 
-        {
-        result.add(elem);
-        }
-        T[] others = anotherBag.toArray();
-        for (T elem : others) 
-        {
-        if(result.contains(elem))
-        {
-        result.remove(elem);
-        }
-        }
-        return result;
-        }  */
-       
+        
 }
