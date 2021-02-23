@@ -8,14 +8,14 @@ public class ArrayBagTest
 	BagInterface<String> b1 = new ResizableArrayBag<String>();
 	BagInterface<String> b2 = new ResizableArrayBag<String>();
 	{
-		b1.add("Hello");//a
-		b1.add("how are");//c
-		b1.add("you?");//c
+		b1.add("Hello");
+		b1.add("how are");
+		b1.add("you?");
 	
 		b2.add("how are");
-		b2.add("how are");//b
-		b2.add("/");//d
-		b2.add("ハワユ");//e
+		b2.add("how are");
+		b2.add("/");
+		b2.add("ハワユ");
 	}
 
 	@Test

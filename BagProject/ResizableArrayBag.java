@@ -364,5 +364,5 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
             }
         }
         return result;
-        
+    }   
 }
