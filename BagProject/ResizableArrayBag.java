@@ -3,7 +3,6 @@
  */
 
 import java.util.Arrays;
-
 public class ResizableArrayBag<T> implements BagInterface<T> {
     private Node firstNode;
     private T[] bag;
@@ -36,6 +35,10 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
     }
 
 
+    
+    /** 
+     * @param capacity
+     */
     private void checkCapacity(int capacity)
     {
         if(capacity>MAX_CAPACITY)
@@ -56,22 +59,39 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
     }
 
 
+    
+    /** 
+     * @return int
+     */
     public int getCurrentSize() 
     {
         return numberOfEntries;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isArrayFull()
     {
         return numberOfEntries==bag.length;
     }
 
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isEmpty() 
     {
         return numberOfEntries == 0;
     }
 
+    
+    /** 
+     * @param newEntry
+     * @return boolean
+     */
     public boolean add(T newEntry) 
     {
         if (integrityOK){
@@ -89,12 +109,21 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
             throw new SecurityException("ArrayBag object is corrupt.");
     }
 
+    
+    /** 
+     * @return T
+     */
     public T remove()
     {
         T result = removeEntry(numberOfEntries - 1);
         return result;
     }
 
+    
+    /** 
+     * @param givenIndex
+     * @return T
+     */
     private T removeEntry(int givenIndex) 
     {
         T result=null;
@@ -109,6 +138,11 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
         return result;
     }
 
+    
+    /** 
+     * @param anEntry
+     * @return boolean
+     */
     public boolean remove(T anEntry) 
     {
         checkIntegrity();
@@ -117,6 +151,11 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
         return anEntry.equals(result);
     }
 
+    
+    /** 
+     * @param anEntry
+     * @return int
+     */
     private int getIndexOf(T anEntry)
     {
         int where =-1;
@@ -143,6 +182,11 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
     }
 
 
+    
+    /** 
+     * @param anEntry
+     * @return int
+     */
     public int getFrequencyOf(T anEntry) 
     {
         int frequency = 0;
@@ -162,6 +206,11 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
     }
 
 
+    
+    /** 
+     * @param anEntry
+     * @return boolean
+     */
     public boolean contains(T anEntry) 
     {
         boolean found = false;
@@ -177,6 +226,10 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 		return found;
     }
 
+    
+    /** 
+     * @return T[]
+     */
     public T[] toArray() {
       T[] copy = (T[])new Object[numberOfEntries];
         for (int i = 0; i < this.numberOfEntries; i++) {
@@ -216,6 +269,11 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
 		}
 	}
 
+    
+    /** 
+     * @param anotherBag
+     * @return BagInterface<T>
+     */
     @Override
     public BagInterface<T> union(BagInterface<T> anotherBag) 
     {
@@ -233,6 +291,10 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
         return result;
     }
     
+
+/** 
+ * @return BagInterface<T>
+ */
 /*     @Override
     public BagInterface<T> intersection(BagInterface<T> anotherBag) 
     {
@@ -276,6 +338,10 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
         return result;
     }
     
+    /** 
+     * @param anotherBag
+     * @return BagInterface<T>
+     */
     @Override
     public BagInterface<T> difference(BagInterface<T> anotherBag) {
         BagInterface <T> result = new ResizableArrayBag<>();

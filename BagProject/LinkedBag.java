@@ -25,6 +25,11 @@ public class LinkedBag<T> implements BagInterface<T>
 
 	}
 
+	
+	/** 
+	 * @param newEntry
+	 * @return boolean
+	 */
 	public boolean add(T newEntry) {
 		Node newNode = new Node(newEntry);
 		newNode.next = firstNode;
@@ -33,6 +38,10 @@ public class LinkedBag<T> implements BagInterface<T>
 		return true;
 	}
 
+	
+	/** 
+	 * @return T
+	 */
 	public T remove() {
 		T result = null;
 		if (firstNode != null) {
@@ -44,6 +53,11 @@ public class LinkedBag<T> implements BagInterface<T>
 		return result;
 	} // end remove
 
+	
+	/** 
+	 * @param anEntry
+	 * @return Node
+	 */
 	private Node getReferenceTo(T anEntry) 
 	{
 		boolean found = false;
@@ -59,6 +73,11 @@ public class LinkedBag<T> implements BagInterface<T>
 		return currentNode;
 	} // end getReferenceTo
 
+	
+	/** 
+	 * @param anEntry
+	 * @return boolean
+	 */
 	public boolean remove(T anEntry) 
 	{
 		boolean result = false;
@@ -78,11 +97,19 @@ public class LinkedBag<T> implements BagInterface<T>
 		return result;
 	} // end remove
 
+	
+	/** 
+	 * @return boolean
+	 */
 	public boolean isEmpty()
 	{
 		return numberOfEntries==0;
 	}
 
+	
+	/** 
+	 * @return int
+	 */
 	public int getCurrentSize()
 	{
 		return numberOfEntries;
@@ -94,6 +121,11 @@ public class LinkedBag<T> implements BagInterface<T>
 			remove();
 	}
 
+	
+	/** 
+	 * @param anEntry
+	 * @return int
+	 */
 	public int getFrequencyOf(T anEntry)
 	{
 		int frequency = 0;
@@ -112,6 +144,11 @@ public class LinkedBag<T> implements BagInterface<T>
 		return frequency;
 	}
 
+	
+	/** 
+	 * @param anEntry
+	 * @return boolean
+	 */
 	public boolean contains(T anEntry)
 	{
 		boolean found = false;
@@ -126,6 +163,10 @@ public class LinkedBag<T> implements BagInterface<T>
 		}
 		return found;
 	}
+	
+	/** 
+	 * @return T[]
+	 */
 	public T[] toArray()
 	{
 		@SuppressWarnings("unchecked")
@@ -142,6 +183,11 @@ public class LinkedBag<T> implements BagInterface<T>
 		return result;
 	}
 
+	
+	/** 
+	 * @param anotherBag
+	 * @return BagInterface<T>
+	 */
 	@Override
 	public BagInterface<T> union(BagInterface<T> anotherBag) 
 	{
@@ -159,6 +205,11 @@ public class LinkedBag<T> implements BagInterface<T>
 		return result;
 	}
 
+	
+	/** 
+	 * @param anotherBag
+	 * @return BagInterface<T>
+	 */
 	@Override
 	public BagInterface<T> intersection(BagInterface<T> anotherBag) 
 	{
@@ -181,6 +232,11 @@ public class LinkedBag<T> implements BagInterface<T>
 		return finalResult;
 	}
 
+	
+	/** 
+	 * @param anotherBag
+	 * @return BagInterface<T>
+	 */
 	@Override
 	public BagInterface<T> difference(BagInterface<T> anotherBag) 
 	{

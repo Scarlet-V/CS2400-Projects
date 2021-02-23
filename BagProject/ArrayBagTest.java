@@ -1,3 +1,4 @@
+
 import java.util.Arrays;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -37,7 +38,9 @@ public class ArrayBagTest
 		System.out.println("[how are, how are]");
 		assertEquals("[how are, how are]", Arrays.toString(b2.intersection(b1).toArray()));
 	}
-  	public static void main(String[] args) 
+  	
+
+/* 	  public static void main(String[] args) 
 	{
 		BagInterface<String> b1 = new ResizableArrayBag<String>();
 		BagInterface<String> b2 = new ResizableArrayBag<String>();
@@ -59,5 +62,5 @@ public class ArrayBagTest
 		System.out.println("bag1 difference bag2: "+ Arrays.toString(b1.difference(b2).toArray())); // [how are]
 		System.out.println("bag2 difference bag1: "+ Arrays.toString(b2.difference(b1).toArray())); // [how are, /, "ハワユ"]
 	}  
- 
+  */
 }
