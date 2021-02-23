@@ -240,22 +240,9 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
         return copy;
     }
 
-/*     public T[] toArray()
-    {
-        @SuppressWarnings("unchecked")
-		T[] result=(T[])new Object[numberOfEntries];
-		int index=0;
-		Node currentNode=firstNode;
-		while((index<numberOfEntries)&&(currentNode !=null))
-		{
-			result[index] =currentNode.data;
-			index++;
-			currentNode=currentNode.next;
-		}
-		return result;
-    } */
 
-    private class Node {
+    private class Node 
+    {
 		private T data;
 		private Node next;
 
@@ -292,29 +279,6 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
     }
     
 
-/** 
- * @return BagInterface<T>
- */
-/*     @Override
-    public BagInterface<T> intersection(BagInterface<T> anotherBag) 
-    {
-        BagInterface < T > result = new ResizableArrayBag<>();
-        BagInterface < T > finalResult = new ResizableArrayBag<>();
-        T[] mine = this.toArray();
-        for (T elem : mine) 
-        {
-            result.add(elem);
-        }
-        T[] others = anotherBag.toArray();
-        for (T elem : others) 
-        {
-            if(result.contains(elem))
-        {
-                finalResult.add(elem);
-        }
-        }
-        return finalResult;
-    } */
     
     @Override
     public BagInterface<T> intersection(BagInterface<T> anotherBag) {
@@ -364,45 +328,5 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
             }
         }
         return result;
-        /*         a:
-        for (T i : mine) {
-            b:
-            for (T k : others) {
-                if(i!=k){
-                    System.out.println("I: "+i+", K out: "+k);
-                    System.out.println("mine: "+mine+", other out: "+others);
-                    result.add(i);
-                    break a;
-                }
-                else{
-                    break ;
-                }  
-                
-             }
-        } */
-        /* for (T elem : mine) {
-            result.add(elem);
-        } */
-    }
-
-    /* @Override
-    public BagInterface<T> difference(BagInterface<T> anotherBag) 
-    {
-        BagInterface < T > result = new ResizableArrayBag<>();
-        T[] mine = this.toArray();
-        for (T elem : mine) 
-        {
-        result.add(elem);
-        }
-        T[] others = anotherBag.toArray();
-        for (T elem : others) 
-        {
-        if(result.contains(elem))
-        {
-        result.remove(elem);
-        }
-        }
-        return result;
-        }  */
-       
+    }   
 }
